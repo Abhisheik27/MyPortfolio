@@ -19,18 +19,13 @@ export function About() {
             <div>
               <h3 className="text-2xl font-bold mb-4">My Journey</h3>
               <p className="text-muted-foreground mb-4">
-                I'm a passionate developer with a background in computer science and a love for creating beautiful,
-                functional websites and applications. My journey in tech started when I built my first website at the
-                age of 15, and I've been hooked ever since.
+                I'm a developer and data science grad with a passion for building smart, useful systems—whether it's streaming real-time data, crafting LLM-powered tools, or diving into ML pipelines. My journey into tech started with curiosity and late-night code, and over time, it turned into something I genuinely love doing.
               </p>
               <p className="text-muted-foreground mb-4">
-                With over 5 years of experience in web development, I've worked on a variety of projects ranging from
-                small business websites to complex web applications. I'm constantly learning and exploring new
-                technologies to improve my skills.
+                I've worked on everything from machine learning models to full-stack AI apps, always chasing that balance between clean engineering and practical impact. Learning never really stops for me—there's always a new model, tool, or framework to explore.
               </p>
               <p className="text-muted-foreground">
-                When I'm not coding, you can find me hiking, reading sci-fi novels, or experimenting with new recipes in
-                the kitchen.
+                Outside of tech, I'm usually watching football (the real kind), experimenting in the kitchen, or hitting the hiking trails around San Diego when the weather's playing nice.
               </p>
             </div>
           </FadeIn>
@@ -42,17 +37,17 @@ export function About() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Bachelor of Science in Computer Science</span>
-                      <Badge>2018-2022</Badge>
+                      <span className="font-medium">Master of Science in Data Science</span>
+                      <Badge>Sep. 2023 – Mar. 2025</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">University Name</p>
+                    <p className="text-sm text-muted-foreground">University of California, San Diego</p>
                   </div>
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Full Stack Web Development</span>
-                      <Badge>2017</Badge>
+                      <span className="font-medium">Bachelor of Engineering, Computer Engineering</span>
+                      <Badge>Jul. 2019 – May 2023</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">Coding Bootcamp</p>
+                    <p className="text-sm text-muted-foreground">University of Mumbai</p>
                   </div>
                 </div>
               </CardContent>
@@ -64,17 +59,17 @@ export function About() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Senior Frontend Developer</span>
-                      <Badge>2022-Present</Badge>
+                      <span className="font-medium">Python Developer</span>
+                      <Badge>Jun. 2024 – Aug. 2024</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">Company Name</p>
+                    <p className="text-sm text-muted-foreground">UC San Diego, San Diego, CA</p>
                   </div>
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Web Developer</span>
-                      <Badge>2019-2022</Badge>
+                      <span className="font-medium">Instructional Assistant</span>
+                      <Badge>Sep. 2024 – Dec. 2024</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">Previous Company</p>
+                    <p className="text-sm text-muted-foreground">UC San Diego, San Diego, CA</p>
                   </div>
                 </div>
               </CardContent>

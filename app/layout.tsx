@@ -14,9 +14,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata = {
-  title: "Your Name - Portfolio",
+  title: "Abhisheik Jadhav - Portfolio",
   description: "Personal portfolio website showcasing my projects and skills",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -25,9 +24,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>

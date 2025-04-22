@@ -36,7 +36,7 @@
   }
 
   .light {
-    --background: 0 0% 100%;
+    --background: 220 25% 97%;
     --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
@@ -45,24 +45,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 263.4 70% 50.4%;
+    --primary: 263.4 60% 50.4%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 240 4.8% 95.9%;
+    --secondary: 220 14.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 240 4.8% 95.9%;
+    --muted: 220 14.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 240 4.8% 95.9%;
+    --accent: 220 14.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 263.4 70% 50.4%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 263.4 60% 50.4%;
 
     --radius: 0.75rem;
   }
@@ -105,8 +105,8 @@
 }
 
 .light .grid-pattern {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 
 .glow {
@@ -114,5 +114,5 @@
 }
 
 .light .glow {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
 }

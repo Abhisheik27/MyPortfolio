@@ -32,21 +32,42 @@ export function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    })
+      const data = await response.json()
 
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    })
-    setIsSubmitting(false)
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      })
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error("Error sending message:", error)
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -55,54 +76,13 @@ export function Contact() {
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">Get In Touch</h2>
           <p className="text-muted-foreground text-center max-w-[700px] mx-auto mb-12">
-            Have a project in mind or want to chat? Feel free to reach out!
+            Want to work together or want to chat? Feel free to reach out!!
           </p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <FadeIn direction="right" delay={0.2}>
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-            <StaggerChildren className="space-y-6">
-              <Card>
-                <CardContent className="p-6 flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Email</h4>
-                    <p className="text-muted-foreground">your.email@example.com</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6 flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Phone className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Phone</h4>
-                    <p className="text-muted-foreground">+1 (123) 456-7890</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6 flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Location</h4>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </StaggerChildren>
-          </FadeIn>
-
-          <FadeIn direction="left" delay={0.4}>
-            <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
+        <div className="max-w-[600px] mx-auto">
+          <FadeIn direction="up" delay={0.4}>
+            <h3 className="text-2xl font-bold mb-6 text-center">Send Me a Message</h3>
             <motion.form
               onSubmit={handleSubmit}
               className="space-y-4"

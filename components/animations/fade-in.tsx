@@ -21,11 +21,14 @@ export function FadeIn({
   delay = 0,
   duration = 0.5,
   className = "",
-  once = true,
+  once = false,
   distance = 50,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once })
+  const isInView = useInView(ref, { 
+    once: false,
+    amount: 0.3
+  })
 
   const getDirectionOffset = () => {
     switch (direction) {
