@@ -97,12 +97,15 @@ export function Projects() {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
+                  {/* Code button commented out temporarily
                   <Button variant="outline" size="sm" asChild className="rounded-full">
                     <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
                       Code
                     </Link>
                   </Button>
+                  */}
+                  {/* Live Demo button commented out temporarily
                   {project.liveUrl && (
                     <Button size="sm" asChild className="rounded-full">
                       <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -111,6 +114,7 @@ export function Projects() {
                       </Link>
                     </Button>
                   )}
+                  */}
                 </CardFooter>
               </Card>
             </AnimatedCard>
