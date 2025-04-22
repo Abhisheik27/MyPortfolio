@@ -48,8 +48,8 @@ export function Contact() {
       }
 
       toast({
-        title: "Message sent!",
-        description: "Your message was sent, I will get back to you asap on your email!",
+        title: "Message Sent",
+        description: "Thanks for reaching out! I'll get back to you soon!!!",
       })
 
       setFormData({
