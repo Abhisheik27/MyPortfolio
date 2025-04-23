@@ -33,7 +33,9 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <div className="w-8" /> {/* Spacer for centering */}
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <img src="/favicon.ico" alt="AJ Logo" className="h-8 w-8" />
+        </div>
 
         <nav className="hidden md:flex items-center gap-6">
           <Link 

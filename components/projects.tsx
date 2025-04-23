@@ -1,11 +1,14 @@
-import Link from "next/link"
-import { ExternalLink, Github } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { FadeIn } from "@/components/animations/fade-in"
-import { StaggerChildren } from "@/components/animations/stagger-children"
-import { AnimatedCard } from "@/components/animations/animated-card"
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { ExternalLink, Github } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { FadeIn } from "@/components/animations/fade-in";
+import { StaggerChildren } from "@/components/animations/stagger-children";
+import { AnimatedCard } from "@/components/animations/animated-card";
 
 export function Projects() {
   const projects = [
@@ -58,14 +61,65 @@ export function Projects() {
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
       githubUrl: "#",
     },
+    {
+      title: "Parallel Maxflow Algorithm Optimization",
+      description: "Designed and optimized a distributed Push-Relabel Maxflow algorithm using MPI, enabling parallel execution across Linux nodes with fault-tolerant design.",
+      image: "/maxflow.webp",
+      tags: ["C", "MPI", "Linux", "NFS", "Multithreading", "Graph Algorithms"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "CHF Detection from ECG Signals",
+      description: "Developed a CNN-based deep learning model to detect Congestive Heart Failure (CHF) from raw ECG signals.",
+      image: "/chf.jpg",
+      tags: ["Python", "TensorFlow", "CNN", "Pandas", "Signal Processing"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Document Summarization",
+      description: "Compared extractive and abstractive methods for text summarization using BERTSum and LSA models.",
+      image: "/docsum.jpg",
+      tags: ["Python", "Hugging Face Transformers", "BERTSum", "Scikit-learn", "NLP"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Google Trends Analysis",
+      description: "Extracted and visualized trends using Google Trends data to explore behavioral patterns and interest over time.",
+      image: "/gtrends.png",
+      tags: ["R", "gTrendsR", "ggplot2", "dplyr", "Data Visualization"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Deep Learning Library in C (APPL)",
+      description: "Implemented a basic deep learning library from scratch in C to simulate the behavior of a simple 3-layer neural network.",
+      image: "/dl.png",
+      tags: ["C", "Linux", "Neural Networks", "Memory Management"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Climate Analysis using NorESM2",
+      description: "Performed climate trend analysis using NorESM2 model output, focusing on CO₂-driven global and regional temperature shifts. Includes an interactive CLI for exploring projections.",
+      image: "/climate.png",
+      tags: ["Python", "Pandas", "Matplotlib", "Regression Analysis", "Climate Data", "CLI"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
   ]
+
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
     <section id="projects" className="py-16 md:py-24 grid-pattern">
       <div className="container">
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6 text-center relative z-10">
-          <span className="gradient-text block overflow-visible pb-1">My Projects</span>
+            <span className="gradient-text block overflow-visible pb-1">My Projects</span>
           </h2>
           <p className="text-muted-foreground text-center max-w-[700px] mx-auto mb-12">
             Here are some of the projects I've worked on. Each project represents different skills and technologies.
@@ -73,7 +127,7 @@ export function Projects() {
         </FadeIn>
 
         <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <AnimatedCard key={index}>
               <Card className="overflow-hidden flex flex-col h-full border-0 gradient-border">
                 <div className="aspect-video relative overflow-hidden">
@@ -96,31 +150,22 @@ export function Projects() {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="flex justify-between">
-                  {/* Code button commented out temporarily
-                  <Button variant="outline" size="sm" asChild className="rounded-full">
-                    <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </Link>
-                  </Button>
-                  */}
-                  {/* Live Demo button commented out temporarily
-                  {project.liveUrl && (
-                    <Button size="sm" asChild className="rounded-full">
-                      <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Live Demo
-                      </Link>
-                    </Button>
-                  )}
-                  */}
-                </CardFooter>
               </Card>
             </AnimatedCard>
           ))}
         </StaggerChildren>
+
+        <div className="text-center mt-8">
+          <Button onClick={() => {
+            setShowAll(!showAll);
+            if (showAll) {
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}>
+            {showAll ? "View Less" : "View More"}
+          </Button>
+        </div>
       </div>
     </section>
-  )
+  );
 }
