@@ -23,7 +23,3 @@ The website is live at:
 3. The projects section dynamically updates based on the data provided in the `Projects` component.
 4. The navbar includes a clickable AJ logo that scrolls to the top of the page.
 
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
