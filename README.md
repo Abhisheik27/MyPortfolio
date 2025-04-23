@@ -1,30 +1,29 @@
-# Portfolio website help
+# Portfolio Website
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+This repository contains the source code for my personal portfolio website. The website showcases my projects, skills, and contact information.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/a1jadhav-ucsdedus-projects/v0-portfolio-website-help)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/XcBK1VZx5qy)
+## Features
 
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+- **Responsive Design**: Works seamlessly on all devices.
+- **Dark Mode**: Toggle between light and dark themes.
+- **Smooth Scrolling**: Navigate through sections with smooth transitions.
+- **AJ Logo Navigation**: Click the AJ logo in the navbar to scroll to the top.
+- **Dynamic Projects Section**: View more or fewer projects with a toggle button.
 
 ## Deployment
 
-Your project is live at:
+The website is live at:
 
-**[https://vercel.com/a1jadhav-ucsdedus-projects/v0-portfolio-website-help](https://vercel.com/a1jadhav-ucsdedus-projects/v0-portfolio-website-help)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/XcBK1VZx5qy](https://v0.dev/chat/projects/XcBK1VZx5qy)**
+**[https://my-portfolio-seven-virid-16.vercel.app/](https://my-portfolio-seven-virid-16.vercel.app/)**
 
 ## How It Works
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+1. The website is built using **Next.js** and styled with **Tailwind CSS**.
+2. Animations are powered by **Framer Motion**.
+3. The projects section dynamically updates based on the data provided in the `Projects` component.
+4. The navbar includes a clickable AJ logo that scrolls to the top of the page.
+
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
