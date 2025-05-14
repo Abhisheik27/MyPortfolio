@@ -22,18 +22,18 @@ export function Projects() {
       githubUrl: "#",
     },
     {
-      title: "Fraud Detection System",
-      description: "Developed a fraud detection pipeline using traditional ML and neural networks, with over 3,200 engineered features.",
-      image: "/fraud_detection.png",
-      tags: ["Python", "XGBoost", "LightGBM", "Neural Networks", "Pandas", "Scikit-learn"],
+      title: "CHF Detection from ECG Signals",
+      description: "Developed a CNN-based deep learning model to detect Congestive Heart Failure (CHF) from raw ECG signals.",
+      image: "/chf.jpg",
+      tags: ["Python", "TensorFlow", "CNN", "Pandas", "Signal Processing"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/cnn-for-chf-detection",
     },
     {
-      title: "Weather Forecasting",
-      description: "Built a time series forecasting model for regional weather trends using historical climate data.",
-      image: "weather.jpg",
-      tags: ["Python", "Prophet", "Pandas", "Matplotlib", "Time Series Analysis"],
+      title: "Climate Analysis using NorESM2",
+      description: "Performed climate trend analysis using NorESM2 model output, focusing on CO₂-driven global and regional temperature shifts. Includes an interactive CLI for exploring projections.",
+      image: "/climate.png",
+      tags: ["Python", "Pandas", "Matplotlib", "Regression Analysis", "Climate Data", "CLI"],
       liveUrl: "#",
       githubUrl: "#",
     },
@@ -46,10 +46,34 @@ export function Projects() {
       githubUrl: "#",
     },
     {
-      title: "Scalable Data Streaming System",
-      description: "Designed a cloud-based data pipeline to simulate and process real-time stock market feeds.",
-      image: "/stock.png",
-      tags: ["Kafka", "AWS EC2", "S3", "Athena", "Python", "Data Ingestion"],
+      title: "Deep Learning Library in C (APPL)",
+      description: "Implemented a basic deep learning library from scratch in C to simulate the behavior of a simple 3-layer neural network.",
+      image: "/dl.png",
+      tags: ["C", "Linux", "Neural Networks", "Memory Management"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Document Summarization",
+      description: "Compared extractive and abstractive methods for text summarization using BERTSum and LSA models.",
+      image: "/docsum.jpg",
+      tags: ["Python", "Hugging Face Transformers", "BERTSum", "Scikit-learn", "NLP"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Fraud Detection System",
+      description: "Developed a fraud detection pipeline using traditional ML and neural networks, with over 3,200 engineered features.",
+      image: "/fraud_detection.png",
+      tags: ["Python", "XGBoost", "LightGBM", "Neural Networks", "Pandas", "Scikit-learn"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Google Trends Analysis",
+      description: "Extracted and visualized trends using Google Trends data to explore behavioral patterns and interest over time.",
+      image: "/gtrends.png",
+      tags: ["R", "gTrendsR", "ggplot2", "dplyr", "Data Visualization"],
       liveUrl: "#",
       githubUrl: "#",
     },
@@ -70,42 +94,26 @@ export function Projects() {
       githubUrl: "#",
     },
     {
-      title: "CHF Detection from ECG Signals",
-      description: "Developed a CNN-based deep learning model to detect Congestive Heart Failure (CHF) from raw ECG signals.",
-      image: "/chf.jpg",
-      tags: ["Python", "TensorFlow", "CNN", "Pandas", "Signal Processing"],
+      title: "Property Tax Fraud Detection (NYC)",
+      description: "Identified potentially fraudulent property tax records in NYC using unsupervised machine learning, PCA, and anomaly detection techniques.",
+      image: "nyc.png",
+      tags: ["Python", "Jupyter Notebook", "pandas", "scikit-learn", "TensorFlow", "matplotlib", "pandas-profiling"],
+      liveUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Property-Fraud-Detection",
+    },
+    {
+      title: "Scalable Data Streaming System",
+      description: "Designed a cloud-based data pipeline to simulate and process real-time stock market feeds.",
+      image: "/stock.png",
+      tags: ["Kafka", "AWS EC2", "S3", "Athena", "Python", "Data Ingestion"],
       liveUrl: "#",
       githubUrl: "#",
     },
     {
-      title: "Document Summarization",
-      description: "Compared extractive and abstractive methods for text summarization using BERTSum and LSA models.",
-      image: "/docsum.jpg",
-      tags: ["Python", "Hugging Face Transformers", "BERTSum", "Scikit-learn", "NLP"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Google Trends Analysis",
-      description: "Extracted and visualized trends using Google Trends data to explore behavioral patterns and interest over time.",
-      image: "/gtrends.png",
-      tags: ["R", "gTrendsR", "ggplot2", "dplyr", "Data Visualization"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Deep Learning Library in C (APPL)",
-      description: "Implemented a basic deep learning library from scratch in C to simulate the behavior of a simple 3-layer neural network.",
-      image: "/dl.png",
-      tags: ["C", "Linux", "Neural Networks", "Memory Management"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Climate Analysis using NorESM2",
-      description: "Performed climate trend analysis using NorESM2 model output, focusing on CO₂-driven global and regional temperature shifts. Includes an interactive CLI for exploring projections.",
-      image: "/climate.png",
-      tags: ["Python", "Pandas", "Matplotlib", "Regression Analysis", "Climate Data", "CLI"],
+      title: "Weather Forecasting",
+      description: "Built a time series forecasting model for regional weather trends using historical climate data.",
+      image: "weather.jpg",
+      tags: ["Python", "Prophet", "Pandas", "Matplotlib", "Time Series Analysis"],
       liveUrl: "#",
       githubUrl: "#",
     },
@@ -129,27 +137,66 @@ export function Projects() {
         <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
           {visibleProjects.map((project, index) => (
             <AnimatedCard key={index}>
-              <Card className="overflow-hidden flex flex-col h-full border-0 gradient-border">
-                <div className="aspect-video relative overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary" className="rounded-full">
-                        {tag}
-                      </Badge>
-                    ))}
+              <Card className="overflow-hidden flex flex-col h-full border-2 border-transparent bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 p-[2px]">
+                <div className="bg-background h-full rounded-lg">
+                  <div className="aspect-video relative overflow-hidden">
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                    />
                   </div>
-                </CardContent>
+                  <CardHeader>
+                    <CardTitle>{project.title}</CardTitle>
+                    <CardDescription>{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <Badge key={tagIndex} variant="secondary" className="rounded-full">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                  {project.title === "Document Summarization" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://chocolate-yard-038.notion.site/Document-Summarization-Using-Latent-Semantic-Indexing-eb81fc4925054d54af65571ceb5227e5" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : project.title === "Property Tax Fraud Detection (NYC)" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/Property-Fraud-Detection" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : project.title === "CHF Detection from ECG Signals" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/cnn-for-chf-detection" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : null}
+                </div>
               </Card>
             </AnimatedCard>
           ))}
