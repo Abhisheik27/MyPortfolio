@@ -1,10 +1,31 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import { FadeIn } from "@/components/animations/fade-in"
+import { useState, useEffect } from "react"
 
 export function Hero() {
+  const [welcomeIndex, setWelcomeIndex] = useState(0)
+
+  const welcomeMessages = [
+    "Welcome to my portfolio!",
+    "मेरे पोर्टफोलियो में आपका स्वागत है!",
+    "¡Bienvenido a mi portafolio!",
+    "Welkom bij mijn portfolio!",
+    "Willkommen in meinem Portfolio!"
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWelcomeIndex((prev) => (prev + 1) % welcomeMessages.length)
+    }, 3000) // Change message every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <div className="relative grid-pattern pt-16">
       <Navbar />
@@ -12,6 +33,11 @@ export function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto py-12 px-6">
           {/* Left side - Text content */}
           <div className="text-left space-y-8 pr-4">
+            <FadeIn delay={0.1} duration={0.7}>
+              <div className="text-lg font-medium transition-opacity duration-500 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 bg-clip-text text-transparent animate-gradient-flow mb-4">
+                {welcomeMessages[welcomeIndex]}
+              </div>
+            </FadeIn>
             <FadeIn delay={0.2} duration={0.7}>
               <h1 className="text-5xl font-bold sm:text-6xl md:text-7xl pb-4">
                 <span className="gradient-text block leading-[1.1]">Abhisheik</span>

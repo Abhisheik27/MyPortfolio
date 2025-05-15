@@ -35,15 +35,15 @@ export function Projects() {
       image: "/climate.png",
       tags: ["Python", "Pandas", "Matplotlib", "Regression Analysis", "Climate Data", "CLI"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Climate-Data-Analysis",
     },
     {
-      title: "Causal Effect of Happiness",
+      title: "Causal Effects of Socio-Economic Factors on Happiness",
       description: "Performed causal inference on World Happiness data to understand the impact of socioeconomic factors.",
       image: "/happiness.jpeg",
       tags: ["Python", "DoWhy", "LiNGAM", "Pandas", "Regression Analysis"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Causal-Effects-of-Socio-Economic-Factors-on-Happiness",
     },
     {
       title: "Deep Learning Library in C (APPL)",
@@ -75,7 +75,7 @@ export function Projects() {
       image: "/gtrends.png",
       tags: ["R", "gTrendsR", "ggplot2", "dplyr", "Data Visualization"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Google-Trend-Analysis",
     },
     {
       title: "My Portfolio (yeah this one)",
@@ -107,7 +107,7 @@ export function Projects() {
       image: "/stock.png",
       tags: ["Kafka", "AWS EC2", "S3", "Athena", "Python", "Data Ingestion"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Real-Time-Stock-Market-Data-Project",
     },
     {
       title: "Weather Forecasting",
@@ -191,6 +191,54 @@ export function Projects() {
                         asChild
                       >
                         <Link href="https://github.com/Abhisheik27/cnn-for-chf-detection" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : project.title === "Climate Analysis using NorESM2" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/Climate-Data-Analysis" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : project.title === "Causal Effects of Socio-Economic Factors on Happiness" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/Causal-Effects-of-Socio-Economic-Factors-on-Happiness" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : project.title === "Google Trends Analysis" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/Google-Trend-Analysis" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : project.title === "Scalable Data Streaming System" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/Real-Time-Stock-Market-Data-Project" target="_blank" rel="noopener noreferrer">
                           View Project
                         </Link>
                       </Button>

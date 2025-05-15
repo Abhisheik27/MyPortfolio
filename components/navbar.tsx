@@ -9,6 +9,15 @@ import { ThemeToggle } from "@/components/theme-toggle"
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("")
+  const [welcomeIndex, setWelcomeIndex] = useState(0)
+
+  const welcomeMessages = [
+    "Welcome to my portfolio!",
+    "मेरे पोर्टफोलियो में आपका स्वागत है!",
+    "¡Bienvenido a mi portafolio!",
+    "Welkom bij mijn portfolio!",
+    "Willkommen in meinem Portfolio!"
+  ]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,10 +39,18 @@ export function Navbar() {
     }
   }, [])
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWelcomeIndex((prev) => (prev + 1) % welcomeMessages.length)
+    }, 3000) // Change message every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <img src="/favicon.ico" alt="AJ Logo" className="h-8 w-8" />
         </div>
 
