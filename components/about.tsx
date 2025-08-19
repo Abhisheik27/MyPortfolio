@@ -59,6 +59,13 @@ export function About() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-center mb-1">
+                      <span className="font-medium">Machine Learning Engineer Intern</span>
+                      <Badge>May 2023 – Aug. 2023</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground">Dunamis consultants and Engineers, Mumbai, India</p>
+                  </div>
+                  <div>
+                    <div className="flex justify-between items-center mb-1">
                       <span className="font-medium">Python Developer</span>
                       <Badge>Jun. 2024 – Aug. 2024</Badge>
                     </div>

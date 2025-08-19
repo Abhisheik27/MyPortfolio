@@ -62,6 +62,14 @@ export function Projects() {
       githubUrl: "#",
     },
     {
+      title: "Flarpy Borb",
+      description: "A simple Flappy Bird-style game built with Unity - my first ever Unity project featuring bird movement, pipe spawning, and scoring mechanics.",
+      image: "/flarpy.png",
+      tags: ["Unity", "C#", "Game Development", "2D Games", "Rigidbody2D", "Input System"],
+      liveUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Flarpy-blorb",
+    },
+    {
       title: "Fraud Detection System",
       description: "Developed a fraud detection pipeline using traditional ML and neural networks, with over 3,200 engineered features.",
       image: "/fraud_detection.png",
