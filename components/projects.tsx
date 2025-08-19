@@ -239,6 +239,18 @@ export function Projects() {
                         </Link>
                       </Button>
                     </CardFooter>
+                  ) : project.title === "Flarpy Borb" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/Flarpy-blorb" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
                   ) : project.title === "Scalable Data Streaming System" ? (
                     <CardFooter>
                       <Button 
