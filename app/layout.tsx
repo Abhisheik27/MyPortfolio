@@ -23,6 +23,9 @@ export const metadata = {
     { rel: "apple-touch-icon", sizes: "180x180", url: "/favicon.ico" },
     { rel: "shortcut icon", url: "/favicon.ico" }
   ],
+  verification: {
+    google: "KWX9EsKZwdirUTfCABX9ajuvDZWwarhZ9_qH1BlUZBQ",
+  },
 }
 
 export default function RootLayout({
