@@ -44,7 +44,8 @@ export function Skills() {
         "Next.js (App Router)",
         "Node.js",
         "Tailwind CSS",
-        "Langchain"
+        "Langchain",
+        "OpenAI API"
       ],
     },
   ]

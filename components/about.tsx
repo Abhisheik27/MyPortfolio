@@ -19,10 +19,10 @@ export function About() {
             <div>
               <h3 className="text-2xl font-bold mb-4">My Journey</h3>
               <p className="text-muted-foreground mb-4">
-                I'm a developer and data science grad with a passion for building smart, useful systems—whether it's streaming real-time data, crafting LLM-powered tools, or diving into ML pipelines. My journey into tech started with curiosity and late-night code, and over time, it turned into something I genuinely love doing.
+                I'm a developer and data science grad with a passion for building smart, useful systems: whether it's streaming real-time data, crafting LLM-powered tools, or diving into ML pipelines. My journey into tech started with curiosity and late-night code, and over time, it turned into something I genuinely love doing.
               </p>
               <p className="text-muted-foreground mb-4">
-                I've worked on everything from machine learning models to full-stack AI apps, always chasing that balance between clean engineering and practical impact. Learning never really stops for me—there's always a new model, tool, or framework to explore.
+                I've worked on everything from machine learning models to full-stack AI apps, always chasing that balance between clean engineering and practical impact. Learning never really stops for me, there's always a new model, tool, or framework to explore.
               </p>
               <p className="text-muted-foreground">
                 Outside of tech, I'm usually watching football (the real kind), experimenting in the kitchen, or hitting the hiking trails around San Diego when the weather's playing nice.
@@ -59,10 +59,17 @@ export function About() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Machine Learning Engineer Intern</span>
-                      <Badge>May 2023 – Aug. 2023</Badge>
+                      <span className="font-medium">Software Engineer</span>
+                      <Badge>Aug. 2025 – Present</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">Dunamis consultants and Engineers, Mumbai, India</p>
+                    <p className="text-sm text-muted-foreground">Easley Dunn Productions Inc., Los Angeles, CA</p>
+                  </div>
+                  <div>
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="font-medium">Instructional Assistant</span>
+                      <Badge>Sep. 2024 – Dec. 2024</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground">UC San Diego, San Diego, CA</p>
                   </div>
                   <div>
                     <div className="flex justify-between items-center mb-1">
@@ -73,10 +80,10 @@ export function About() {
                   </div>
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Instructional Assistant</span>
-                      <Badge>Sep. 2024 – Dec. 2024</Badge>
+                      <span className="font-medium">Machine Learning Engineer Intern</span>
+                      <Badge>May 2023 – Aug. 2023</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">UC San Diego, San Diego, CA</p>
+                    <p className="text-sm text-muted-foreground">Dunamis Engineers and Consultants, Mumbai, India</p>
                   </div>
                 </div>
               </CardContent>

@@ -14,8 +14,8 @@ export function Hero() {
     "Welcome to my portfolio!",
     "मेरे पोर्टफोलियो में आपका स्वागत है!",
     "¡Bienvenido a mi portafolio!",
-    "Welkom bij mijn portfolio!",
-    "Willkommen in meinem Portfolio!"
+    "Willkommen in meinem Portfolio!",
+    "私のポートフォリオへようこそ!"
   ]
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export function Hero() {
 
             <FadeIn delay={0.4} duration={0.7}>
               <p className="text-lg text-muted-foreground">
-                Obsessed with building smart stuff using code. From streaming systems to LLM-powered tools, I like turning messy ideas into clean, working products. Currently riding the line between machine learning, software, and "wait… that actually works?"
+                I am a Software Engineer, obsessed with building smart stuff using code. From streaming systems to LLM-powered tools, I like turning messy ideas into clean, working products. Currently riding the line between machine learning, software, and "wait… that actually works?"
               </p>
             </FadeIn>
           </div>

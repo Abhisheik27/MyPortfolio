@@ -62,6 +62,15 @@ export function Projects() {
       githubUrl: "#",
     },
     {
+      title: "E-commerce AI Agent using KumoRFM",
+      description:
+        "Ecommerce analytics agent that answers queries, predicts customer behavior, and generates marketing insights via natural language.",
+      image: "/aiagent.jpg",
+      tags: ["KumoRFM", "RAG", "OpenAI API", "langchain", "Python"],
+      liveUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Ecommerce-AI-agent-using-KumoRFM",
+    },
+    {
       title: "Flarpy Borb",
       description: "A simple Flappy Bird-style game built with Unity - my first ever Unity project featuring bird movement, pipe spawning, and scoring mechanics.",
       image: "/flarpy.png",
@@ -175,6 +184,18 @@ export function Projects() {
                         asChild
                       >
                         <Link href="https://chocolate-yard-038.notion.site/Document-Summarization-Using-Latent-Semantic-Indexing-eb81fc4925054d54af65571ceb5227e5" target="_blank" rel="noopener noreferrer">
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  ) : project.title === "E-commerce AI Agent using KumoRFM" ? (
+                    <CardFooter>
+                      <Button 
+                        variant="outline" 
+                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
+                        asChild
+                      >
+                        <Link href="https://github.com/Abhisheik27/Ecommerce-AI-agent-using-KumoRFM" target="_blank" rel="noopener noreferrer">
                           View Project
                         </Link>
                       </Button>
