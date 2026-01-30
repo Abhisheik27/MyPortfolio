@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
@@ -56,13 +57,13 @@ export function Hero() {
           <div className="flex justify-center md:justify-center order-first md:order-last">
             <FadeIn direction="left" duration={0.6}>
               <div className="relative w-72 h-72 overflow-hidden rounded-2xl bg-muted gradient-border glow border-4 border-primary/30">
-                <img
+                <Image
                   src="/abhisheik-new.jpeg"
                   alt="Abhisheik Jadhav"
-                  className="object-cover w-full h-full"
-                  width={288}
-                  height={288}
-                  style={{ objectFit: 'cover' }}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 288px"
+                  priority={true}
                 />
               </div>
             </FadeIn>
