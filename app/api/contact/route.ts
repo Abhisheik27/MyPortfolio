@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resendApiKey = process.env.RESEND_API_KEY
+const resend = new Resend(resendApiKey)
+const contactEmail = process.env.CONTACT_EMAIL
 
 export async function POST(request: Request) {
   try {
@@ -16,9 +18,23 @@ export async function POST(request: Request) {
     }
 
     // Send email using Resend
+    if (!resendApiKey) {
+      return NextResponse.json(
+        { error: "RESEND_API_KEY is not configured" },
+        { status: 500 }
+      )
+    }
+
+    if (!contactEmail) {
+      return NextResponse.json(
+        { error: "Contact email is not configured" },
+        { status: 500 }
+      )
+    }
+
     const { data, error } = await resend.emails.send({
       from: "Portfolio Contact Form <onboarding@resend.dev>",
-      to: "a1jadhav@ucsd.edu", // Your email address
+      to: contactEmail,
       replyTo: email,
       subject: `Portfolio Contact: ${subject}`,
       html: `
@@ -34,7 +50,7 @@ export async function POST(request: Request) {
     if (error) {
       console.error("Resend error:", error)
       return NextResponse.json(
-        { error: "Failed to send email" },
+        { error: "Failed to send email", details: error },
         { status: 500 }
       )
     }
@@ -46,7 +62,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Server error:", error)
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Internal server error", details: error },
       { status: 500 }
     )
   }

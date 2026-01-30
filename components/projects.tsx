@@ -155,7 +155,7 @@ export function Projects() {
           {visibleProjects.map((project, index) => (
             <AnimatedCard key={index}>
               <Card className="overflow-hidden flex flex-col h-full border-2 border-transparent bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 p-[2px]">
-                <div className="bg-background h-full rounded-lg">
+                <div className="bg-background h-full rounded-lg flex flex-col">
                   <div className="aspect-video relative overflow-hidden">
                     <img
                       src={project.image || "/placeholder.svg"}
@@ -163,23 +163,33 @@ export function Projects() {
                       className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
                     />
                   </div>
-                  <CardHeader>
+                  <CardHeader className="flex-shrink-0">
                     <CardTitle>{project.title}</CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
+                    <CardDescription
+                      className="line-clamp-2 min-h-[2.5rem]"
+                      title={project.description}
+                    >
+                      {project.description}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="secondary" className="rounded-full">
+                      {project.tags.slice(0, 5).map((tag, tagIndex) => (
+                        <Badge key={tagIndex} variant="secondary" className="rounded-full text-xs">
                           {tag}
                         </Badge>
                       ))}
+                      {project.tags.length > 5 && (
+                        <Badge variant="secondary" className="rounded-full text-xs">
+                          +{project.tags.length - 5}
+                        </Badge>
+                      )}
                     </div>
                   </CardContent>
                   {project.title === "Document Summarization" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -189,9 +199,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "E-commerce AI Agent using KumoRFM" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -201,9 +211,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "Property Tax Fraud Detection (NYC)" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -213,9 +223,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "CHF Detection from ECG Signals" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -225,9 +235,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "Climate Analysis using NorESM2" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -237,9 +247,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "Causal Effects of Socio-Economic Factors on Happiness" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -249,9 +259,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "Google Trends Analysis" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -261,9 +271,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "Flarpy Borb" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >
@@ -273,9 +283,9 @@ export function Projects() {
                       </Button>
                     </CardFooter>
                   ) : project.title === "Scalable Data Streaming System" ? (
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
+                    <CardFooter className="flex-shrink-0">
+                      <Button
+                        variant="outline"
                         className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
                         asChild
                       >

@@ -23,3 +23,11 @@ The website is live at:
 3. The projects section dynamically updates based on the data provided in the `Projects` component.
 4. The navbar includes a clickable AJ logo that scrolls to the top of the page.
 
+## Environment Variables
+
+Copy .env.example to .env.local and set the required values:
+
+- RESEND_API_KEY
+- CONTACT_EMAIL
+- NEXT_PUBLIC_HOTJAR_SCRIPT_URL (optional)
+

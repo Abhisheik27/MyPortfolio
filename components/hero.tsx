@@ -55,9 +55,9 @@ export function Hero() {
           {/* Right side - Profile Image */}
           <div className="flex justify-center md:justify-center order-first md:order-last">
             <FadeIn direction="left" duration={0.6}>
-              <div className="relative w-72 h-72 overflow-hidden rounded-2xl bg-muted gradient-border glow">
+              <div className="relative w-72 h-72 overflow-hidden rounded-2xl bg-muted gradient-border glow border-4 border-primary/30">
                 <img
-                  src="/abhisheik-profile.png"
+                  src="/abhisheik-new.jpeg"
                   alt="Abhisheik Jadhav"
                   className="object-cover w-full h-full"
                   width={288}

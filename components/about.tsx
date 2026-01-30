@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerChildren } from "@/components/animations/stagger-children"
+import { JourneyTimeline } from "@/components/journey-timeline"
 
 export function About() {
   return (
@@ -14,81 +15,42 @@ export function About() {
           </p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <FadeIn direction="right" delay={0.2}>
-            <div>
-              <h3 className="text-2xl font-bold mb-4">My Journey</h3>
-              <p className="text-muted-foreground mb-4">
-                I'm a developer and data science grad with a passion for building smart, useful systems: whether it's streaming real-time data, crafting LLM-powered tools, or diving into ML pipelines. My journey into tech started with curiosity and late-night code, and over time, it turned into something I genuinely love doing.
-              </p>
-              <p className="text-muted-foreground mb-4">
-                I've worked on everything from machine learning models to full-stack AI apps, always chasing that balance between clean engineering and practical impact. Learning never really stops for me, there's always a new model, tool, or framework to explore.
-              </p>
-              <p className="text-muted-foreground">
-                Outside of tech, I'm usually watching football (the real kind), experimenting in the kitchen, or hitting the hiking trails around San Diego when the weather's playing nice.
-              </p>
-            </div>
-          </FadeIn>
-
-          <StaggerChildren delay={0.4}>
-            <Card>
-              <CardContent className="p-6">
-                <h4 className="text-xl font-semibold mb-4">Education</h4>
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Master of Science in Data Science</span>
-                      <Badge>Sep. 2023 – Mar. 2025</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">University of California, San Diego</p>
+        <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+          <div>
+            <FadeIn direction="right" delay={0.2}>
+              <h3 className="text-2xl font-bold mb-6">My Journey</h3>
+            </FadeIn>
+            <JourneyTimeline />
+            <FadeIn direction="up" delay={0.7}>
+              <div className="mt-12">
+                <h4 className="text-xl font-bold mb-6 text-center">
+                  <span className="gradient-text">Beyond the Code</span>
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* Football Card */}
+                  <div className="group relative bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/20 rounded-xl p-6 hover:border-green-500/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10">
+                    <div className="text-4xl mb-3 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">⚽</div>
+                    <h5 className="font-semibold text-lg mb-2">Football Fan</h5>
+                    <p className="text-sm text-muted-foreground">Watching, playing, analyzing the beautiful game (the real kind!🤓)</p>
                   </div>
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Bachelor of Engineering, Computer Engineering</span>
-                      <Badge>Jul. 2019 – May 2023</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">University of Mumbai</p>
+
+                  {/* Cooking Card */}
+                  <div className="group relative bg-gradient-to-br from-orange-500/10 to-amber-500/5 border border-orange-500/20 rounded-xl p-6 hover:border-orange-500/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/10">
+                    <div className="text-4xl mb-3 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">🍳</div>
+                    <h5 className="font-semibold text-lg mb-2">Kitchen Explorer</h5>
+                    <p className="text-sm text-muted-foreground">Experimenting with flavors and recipes</p>
+                  </div>
+
+                  {/* Hiking Card */}
+                  <div className="group relative bg-gradient-to-br from-blue-500/10 to-cyan-500/5 border border-blue-500/20 rounded-xl p-6 hover:border-blue-500/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/10">
+                    <div className="text-4xl mb-3 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">🏔️</div>
+                    <h5 className="font-semibold text-lg mb-2">Trail Seeker</h5>
+                    <p className="text-sm text-muted-foreground">Hiking around San Diego when weather's nice</p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <h4 className="text-xl font-semibold mb-4">Work Experience</h4>
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Software Engineer</span>
-                      <Badge>Aug. 2025 – Present</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Easley Dunn Productions Inc., Los Angeles, CA</p>
-                  </div>
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Instructional Assistant</span>
-                      <Badge>Sep. 2024 – Dec. 2024</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">UC San Diego, San Diego, CA</p>
-                  </div>
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Python Developer</span>
-                      <Badge>Jun. 2024 – Aug. 2024</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">UC San Diego, San Diego, CA</p>
-                  </div>
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="font-medium">Machine Learning Engineer Intern</span>
-                      <Badge>May 2023 – Aug. 2023</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Dunamis Engineers and Consultants, Mumbai, India</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </StaggerChildren>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </div>
     </section>

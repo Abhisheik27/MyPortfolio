@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
 import { Toaster } from "@/components/ui/toaster"
 import { Hotjar } from "@/components/hotjar"
+import { ParticleBackground } from "@/components/particle-background"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,8 +45,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <ParticleBackground />
           <Navbar />
-          <main className="min-h-screen">
+          <main className="min-h-screen relative z-10">
             {children}
           </main>
           <Toaster />

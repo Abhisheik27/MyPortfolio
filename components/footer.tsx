@@ -2,6 +2,8 @@ import Link from "next/link"
 import { Github, Linkedin, Mail } from "lucide-react"
 
 export function Footer() {
+  const contactEmail = process.env.CONTACT_EMAIL || process.env.NEXT_PUBLIC_CONTACT_EMAIL
+
   return (
     <footer className="border-t py-8 md:py-12">
       <div className="container flex flex-col md:flex-row justify-between items-center">
@@ -30,13 +32,15 @@ export function Footer() {
             <Linkedin className="h-5 w-5" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link
-            href="mailto:a1jadhav@ucsd.edu"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Mail className="h-5 w-5" />
-            <span className="sr-only">Email</span>
-          </Link>
+          {contactEmail ? (
+            <Link
+              href={`mailto:${contactEmail}`}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Mail className="h-5 w-5" />
+              <span className="sr-only">Email</span>
+            </Link>
+          ) : null}
         </div>
       </div>
     </footer>
