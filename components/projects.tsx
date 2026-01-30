@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -157,10 +158,13 @@ export function Projects() {
               <Card className="overflow-hidden flex flex-col h-full border-2 border-transparent bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 p-[2px]">
                 <div className="bg-background h-full rounded-lg flex flex-col">
                   <div className="aspect-video relative overflow-hidden">
-                    <img
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
+                      fill
                       className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={false}
                     />
                   </div>
                   <CardHeader className="flex-shrink-0">
