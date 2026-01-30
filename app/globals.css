@@ -141,3 +141,9 @@
 .animate-marquee {
   animation: marquee 20s linear infinite;
 }
+
+/* Dynamic styles driven by JavaScript/Framer Motion - kept as inline styles where necessary */
+/* These use CSS properties that cannot be statically defined */
+/* - Framer Motion animated values (scroll progress, fade in/out animations) */
+/* - Dynamic positioning (football player cards) */
+/* - Dynamic transforms based on scroll or user interaction */

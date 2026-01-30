@@ -112,8 +112,7 @@ export function FootballSkills() {
                         <div className="relative">
                             {/* Pitch Container */}
                             <div
-                                className="relative bg-[#00B140] rounded-lg border-4 border-white/90 shadow-2xl w-full max-w-md mx-auto overflow-hidden select-none"
-                                style={{ aspectRatio: '2/3' }}
+                                className="relative bg-[#00B140] rounded-lg border-4 border-white/90 shadow-2xl w-full max-w-md mx-auto overflow-hidden select-none aspect-[2/3]"
                             >
 
                                 {/* Pitch Lines */}
