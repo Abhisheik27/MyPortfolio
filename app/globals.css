@@ -142,6 +142,46 @@
   animation: marquee 20s linear infinite;
 }
 
+@keyframes nudge-left {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes nudge-right {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-nudge-left {
+  animation: nudge-left 1.25s ease-in-out infinite;
+}
+
+.animate-nudge-right {
+  animation: nudge-right 1.25s ease-in-out infinite;
+}
+
+.group:hover .animate-nudge-left,
+.group:hover .animate-nudge-right {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-nudge-left,
+  .animate-nudge-right {
+    animation: none;
+  }
+}
+
 /* Dynamic styles driven by JavaScript/Framer Motion - kept as inline styles where necessary */
 /* These use CSS properties that cannot be statically defined */
 /* - Framer Motion animated values (scroll progress, fade in/out animations) */

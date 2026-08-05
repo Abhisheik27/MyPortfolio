@@ -35,3 +35,7 @@ next-env.d.ts
 
 # cursor
 .cursor
+
+# local-only project archive (no public GitHub links)
+archived_projects.ts
+archived_projects.py

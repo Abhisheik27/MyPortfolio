@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+import Link from "next/link"
 import { GraduationCap, Code, Briefcase, Rocket, Lightbulb, Trophy } from "lucide-react"
 import { FadeIn } from "@/components/animations/fade-in"
 
@@ -10,6 +12,7 @@ interface TimelineItem {
     description: string
     icon: React.ReactNode
     iconColor: string
+    href?: string
 }
 
 export function JourneyTimeline() {
@@ -61,7 +64,25 @@ export function JourneyTimeline() {
             description: "Contributing to RobotRace (100K+ downloads). Optimizing Unity gameplay systems and backend integrations for iOS/Android.",
             icon: <Rocket className="w-5 h-5" />,
             iconColor: "bg-purple-500/20 text-purple-500 border-purple-500/30"
-        }
+        },
+        {
+            year: "Feb 2026 – Present",
+            title: "Forward Deployed Engineer",
+            subtitle: "Dagen AI · Founding engineering team",
+            description:
+                "Joined pre-launch. Customer-facing ownership deploying agentic data pipelines; also ship backend/product changes that unblock real customers.",
+            icon: (
+                <Image
+                    src="/dagen-logo.png"
+                    alt="Dagen AI"
+                    width={28}
+                    height={28}
+                    className="rounded-sm object-contain"
+                />
+            ),
+            iconColor: "bg-background text-foreground border-border",
+            href: "https://www.dagen.ai/",
+        },
     ]
 
     return (
@@ -74,7 +95,7 @@ export function JourneyTimeline() {
                     <FadeIn key={index} delay={index * 0.1} direction="right">
                         <div className="relative pl-16 group">
                             {/* Icon */}
-                            <div className={`absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-2 ${item.iconColor} backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
+                            <div className={`absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-2 ${item.iconColor} backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg overflow-hidden`}>
                                 {item.icon}
                             </div>
 
@@ -87,7 +108,18 @@ export function JourneyTimeline() {
                                     <h3 className="text-xl font-bold">{item.title}</h3>
                                 </div>
                                 <p className="text-sm font-medium text-muted-foreground mb-2">
-                                    {item.subtitle}
+                                    {item.href ? (
+                                        <Link
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="hover:text-primary underline-offset-4 hover:underline"
+                                        >
+                                            {item.subtitle}
+                                        </Link>
+                                    ) : (
+                                        item.subtitle
+                                    )}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
                                     {item.description}

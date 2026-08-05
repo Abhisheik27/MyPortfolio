@@ -1,321 +1,236 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { ExternalLink, Github } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/animations/fade-in";
-import { StaggerChildren } from "@/components/animations/stagger-children";
-import { AnimatedCard } from "@/components/animations/animated-card";
+import { useCallback, useEffect, useRef, useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { ChevronLeft, ChevronRight, Github } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { FadeIn } from "@/components/animations/fade-in"
+
+type Project = {
+  title: string
+  description: string
+  usecase: string
+  image: string
+  imageFit?: "cover" | "contain"
+  tags: string[]
+  liveUrl?: string
+  githubUrl?: string
+}
+
+function projectHref(project: Project) {
+  if (project.liveUrl && project.liveUrl !== "#") return project.liveUrl
+  if (project.githubUrl && project.githubUrl !== "#") return project.githubUrl
+  return null
+}
 
 export function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
-      title: "AI Interview Assistant",
+      title: "Doomscroll Agent",
       description:
-        "Built a full-stack AI-powered tool that simulates mock technical interviews using local LLMs.",
-      image: "/ai_project.png",
-      tags: ["Next.js", "Python", "Tailwind CSS", "Ollama", "Mistral", "CodeLlama", "REST APIs"],
+        "An end-to-end social knowledge pipeline that monitors X (Twitter), clusters noisy posts into narratives, filters for relevance, and turns them into timestamped market insights with recommended actions. Built with n8n orchestration, a FastAPI workflow engine, MongoDB lineage, Redis caching, and a Streamlit dashboard for review.",
+      usecase: "Supply Chain, Social Media Analytics, Market Research",
+      image: "/marketintel.png",
+      imageFit: "contain",
+      tags: ["FastAPI", "n8n", "MongoDB", "Redis", "Apify", "OpenAI", "Python", "Streamlit", "Docker"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/Doomscroll-Agent",
     },
     {
-      title: "CHF Detection from ECG Signals",
-      description: "Developed a CNN-based deep learning model to detect Congestive Heart Failure (CHF) from raw ECG signals.",
-      image: "/chf.jpg",
-      tags: ["Python", "TensorFlow", "CNN", "Pandas", "Signal Processing"],
+      title: "ClinicalTrialAI",
+      description:
+        "A FastAPI backend that answers natural-language questions about clinical trials and returns frontend-ready Vega-Lite charts from the ClinicalTrials.gov Data API v2. The LLM is limited to query planning only — every count, chart value, and citation is computed deterministically in Python, with a fallback planner that works even without an OpenAI key.",
+      usecase: "Healthcare Analytics, Clinical Research, Life Sciences",
+      image: "/clinical-trial-ai.png",
+      tags: ["FastAPI", "Pydantic", "ClinicalTrials.gov", "OpenAI", "Vega-Lite", "Docker", "pytest"],
       liveUrl: "#",
-      githubUrl: "https://github.com/Abhisheik27/cnn-for-chf-detection",
-    },
-    {
-      title: "Climate Analysis using NorESM2",
-      description: "Performed climate trend analysis using NorESM2 model output, focusing on CO₂-driven global and regional temperature shifts. Includes an interactive CLI for exploring projections.",
-      image: "/climate.png",
-      tags: ["Python", "Pandas", "Matplotlib", "Regression Analysis", "Climate Data", "CLI"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/Abhisheik27/Climate-Data-Analysis",
-    },
-    {
-      title: "Causal Effects of Socio-Economic Factors on Happiness",
-      description: "Performed causal inference on World Happiness data to understand the impact of socioeconomic factors.",
-      image: "/happiness.jpeg",
-      tags: ["Python", "DoWhy", "LiNGAM", "Pandas", "Regression Analysis"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/Abhisheik27/Causal-Effects-of-Socio-Economic-Factors-on-Happiness",
-    },
-    {
-      title: "Deep Learning Library in C (APPL)",
-      description: "Implemented a basic deep learning library from scratch in C to simulate the behavior of a simple 3-layer neural network.",
-      image: "/dl.png",
-      tags: ["C", "Linux", "Neural Networks", "Memory Management"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Document Summarization",
-      description: "Compared extractive and abstractive methods for text summarization using BERTSum and LSA models.",
-      image: "/docsum.jpg",
-      tags: ["Python", "Hugging Face Transformers", "BERTSum", "Scikit-learn", "NLP"],
-      liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/ClinicalTrialAI",
     },
     {
       title: "E-commerce AI Agent using KumoRFM",
       description:
-        "Ecommerce analytics agent that answers queries, predicts customer behavior, and generates marketing insights via natural language.",
+        "A conversational analytics agent for ecommerce data that answers natural-language questions, runs dataframe queries, and uses KumoRFM predictive queries to forecast customer behavior and demand. A graph-based workflow routes each ask to the right tool so both technical and non-technical users can get actionable marketing insights.",
+      usecase: "E-commerce, Marketing Analytics, Customer Insights",
       image: "/aiagent.jpg",
       tags: ["KumoRFM", "RAG", "OpenAI API", "langchain", "Python"],
       liveUrl: "#",
       githubUrl: "https://github.com/Abhisheik27/Ecommerce-AI-agent-using-KumoRFM",
     },
     {
-      title: "Flarpy Borb",
-      description: "A simple Flappy Bird-style game built with Unity - my first ever Unity project featuring bird movement, pipe spawning, and scoring mechanics.",
-      image: "/flarpy.png",
-      tags: ["Unity", "C#", "Game Development", "2D Games", "Rigidbody2D", "Input System"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/Abhisheik27/Flarpy-blorb",
-    },
-    {
-      title: "Fraud Detection System",
-      description: "Developed a fraud detection pipeline using traditional ML and neural networks, with over 3,200 engineered features.",
-      image: "/fraud_detection.png",
-      tags: ["Python", "XGBoost", "LightGBM", "Neural Networks", "Pandas", "Scikit-learn"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Google Trends Analysis",
-      description: "Extracted and visualized trends using Google Trends data to explore behavioral patterns and interest over time.",
-      image: "/gtrends.png",
-      tags: ["R", "gTrendsR", "ggplot2", "dplyr", "Data Visualization"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/Abhisheik27/Google-Trend-Analysis",
-    },
-    {
-      title: "My Portfolio (yeah this one)",
-      description:
-        "Portfolio website built with modern web technologies featuring animations, dark mode, and section tracking.",
-      image: "/portfolio.jpg",
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
-      githubUrl: "#",
-    },
-    {
-      title: "Parallel Maxflow Algorithm Optimization",
-      description: "Designed and optimized a distributed Push-Relabel Maxflow algorithm using MPI, enabling parallel execution across Linux nodes with fault-tolerant design.",
-      image: "/maxflow.webp",
-      tags: ["C", "MPI", "Linux", "NFS", "Multithreading", "Graph Algorithms"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Property Tax Fraud Detection (NYC)",
-      description: "Identified potentially fraudulent property tax records in NYC using unsupervised machine learning, PCA, and anomaly detection techniques.",
-      image: "nyc.png",
-      tags: ["Python", "Jupyter Notebook", "pandas", "scikit-learn", "TensorFlow", "matplotlib", "pandas-profiling"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/Abhisheik27/Property-Fraud-Detection",
-    },
-    {
       title: "Scalable Data Streaming System",
-      description: "Designed a cloud-based data pipeline to simulate and process real-time stock market feeds.",
+      description:
+        "A cloud streaming pipeline that simulates real-time stock market feeds with Kafka on AWS EC2. A producer streams market data into a Kafka topic while a consumer writes messages to S3 for durable storage, with Athena available for downstream querying of the persisted data.",
+      usecase: "Fintech, Real-Time Analytics, Cloud Data Pipelines",
       image: "/stock.png",
       tags: ["Kafka", "AWS EC2", "S3", "Athena", "Python", "Data Ingestion"],
       liveUrl: "#",
       githubUrl: "https://github.com/Abhisheik27/Real-Time-Stock-Market-Data-Project",
     },
     {
-      title: "Weather Forecasting",
-      description: "Built a time series forecasting model for regional weather trends using historical climate data.",
-      image: "weather.jpg",
-      tags: ["Python", "Prophet", "Pandas", "Matplotlib", "Time Series Analysis"],
+      title: "CHF Detection from ECG Signals",
+      description:
+        "A convolutional neural network that detects Congestive Heart Failure from raw ECG signals, following published research methods and using Grad-CAM for explainability so model decisions can be inspected on the signal itself. Includes data processing and a classification notebook for reproducible training and evaluation.",
+      usecase: "Healthcare, Medical AI, Clinical Screening",
+      image: "/chf.jpg",
+      tags: ["Python", "TensorFlow", "CNN", "Pandas", "Signal Processing", "Grad-CAM"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/Abhisheik27/cnn-for-chf-detection",
     },
   ]
 
-  const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const updateScrollState = useCallback(() => {
+    const el = scrollerRef.current
+    if (!el) return
+    const maxScroll = el.scrollWidth - el.clientWidth
+    setCanScrollLeft(el.scrollLeft > 4)
+    setCanScrollRight(el.scrollLeft < maxScroll - 4)
+  }, [])
+
+  useEffect(() => {
+    const el = scrollerRef.current
+    if (!el) return
+    updateScrollState()
+    el.addEventListener("scroll", updateScrollState, { passive: true })
+    window.addEventListener("resize", updateScrollState)
+    return () => {
+      el.removeEventListener("scroll", updateScrollState)
+      window.removeEventListener("resize", updateScrollState)
+    }
+  }, [updateScrollState])
+
+  const scrollByCard = (direction: -1 | 1) => {
+    const el = scrollerRef.current
+    if (!el) return
+    const card = el.querySelector<HTMLElement>("[data-project-card]")
+    const gap = 20
+    const amount = (card?.offsetWidth ?? 300) + gap
+    el.scrollBy({ left: direction * amount, behavior: "smooth" })
+  }
 
   return (
     <section id="projects" className="py-16 md:py-24 grid-pattern">
       <div className="container">
         <FadeIn>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6 text-center relative z-10">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-10 text-center relative z-10">
             <span className="gradient-text block overflow-visible pb-1">My Projects</span>
           </h2>
-          <p className="text-muted-foreground text-center max-w-[700px] mx-auto mb-12">
-            Here are some of the projects I've worked on. Each project represents different skills and technologies.
-          </p>
         </FadeIn>
+      </div>
 
-        <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.15}>
-          {visibleProjects.map((project, index) => (
-            <AnimatedCard key={index}>
-              <Card className="overflow-hidden flex flex-col h-full border-2 border-transparent bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 p-[2px]">
-                <div className="bg-background h-full rounded-lg flex flex-col">
-                  <div className="aspect-video relative overflow-hidden">
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={false}
-                    />
-                  </div>
-                  <CardHeader className="flex-shrink-0">
-                    <CardTitle>{project.title}</CardTitle>
-                    <CardDescription
-                      className="line-clamp-2 min-h-[2.5rem]"
-                      title={project.description}
-                    >
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.slice(0, 5).map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="secondary" className="rounded-full text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                      {project.tags.length > 5 && (
-                        <Badge variant="secondary" className="rounded-full text-xs">
-                          +{project.tags.length - 5}
-                        </Badge>
-                      )}
-                    </div>
-                  </CardContent>
-                  {project.title === "Document Summarization" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://chocolate-yard-038.notion.site/Document-Summarization-Using-Latent-Semantic-Indexing-eb81fc4925054d54af65571ceb5227e5" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "E-commerce AI Agent using KumoRFM" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/Ecommerce-AI-agent-using-KumoRFM" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "Property Tax Fraud Detection (NYC)" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/Property-Fraud-Detection" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "CHF Detection from ECG Signals" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/cnn-for-chf-detection" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "Climate Analysis using NorESM2" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/Climate-Data-Analysis" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "Causal Effects of Socio-Economic Factors on Happiness" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/Causal-Effects-of-Socio-Economic-Factors-on-Happiness" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "Google Trends Analysis" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/Google-Trend-Analysis" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "Flarpy Borb" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/Flarpy-blorb" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : project.title === "Scalable Data Streaming System" ? (
-                    <CardFooter className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="w-3/4 mx-auto transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white hover:border-blue-500 animate-in fade-in slide-in-from-bottom-4"
-                        asChild
-                      >
-                        <Link href="https://github.com/Abhisheik27/Real-Time-Stock-Market-Data-Project" target="_blank" rel="noopener noreferrer">
-                          View Project
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  ) : null}
+      <div className="mx-auto flex w-full max-w-[90rem] items-center gap-2 sm:gap-4 px-3 sm:px-6">
+        <Button
+          type="button"
+          variant="outline"
+          size="icon"
+          className="group shrink-0 rounded-full h-12 w-12 border-2 border-foreground bg-background shadow-sm transition-all duration-200 hover:scale-110 hover:bg-foreground hover:text-background hover:shadow-md active:scale-95 disabled:pointer-events-none disabled:opacity-25 disabled:shadow-none disabled:hover:scale-100 disabled:hover:bg-background disabled:hover:text-foreground"
+          aria-label="Previous projects"
+          disabled={!canScrollLeft}
+          onClick={() => scrollByCard(-1)}
+        >
+          <ChevronLeft
+            className={`h-5 w-5 transition-transform duration-200 group-hover:-translate-x-0.5 ${
+              canScrollLeft ? "animate-nudge-left" : ""
+            }`}
+          />
+        </Button>
+
+        <div
+          ref={scrollerRef}
+          className="flex gap-5 overflow-x-auto overscroll-x-contain scroll-smooth snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          {projects.map((project) => {
+            const href = projectHref(project)
+            return (
+              <article
+                key={project.title}
+                data-project-card
+                className="flex w-[min(88vw,380px)] sm:w-[400px] md:w-[420px] shrink-0 snap-start flex-col border-2 border-foreground bg-background"
+              >
+                <div
+                  className={`relative aspect-[16/10] overflow-hidden border-b-2 border-foreground ${
+                    project.imageFit === "contain" ? "bg-[#0B1220]" : "bg-muted"
+                  }`}
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className={project.imageFit === "contain" ? "object-contain p-4" : "object-cover"}
+                    sizes="(max-width: 640px) 88vw, (max-width: 768px) 400px, 420px"
+                  />
                 </div>
-              </Card>
-            </AnimatedCard>
-          ))}
-        </StaggerChildren>
-
-        <div className="text-center mt-8">
-          <Button onClick={() => {
-            setShowAll(!showAll);
-            if (showAll) {
-              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}>
-            {showAll ? "View Less" : "View More"}
-          </Button>
+                <div className="flex flex-1 flex-col gap-4 p-5 pb-6">
+                  <div>
+                    <h3 className="text-lg font-semibold leading-snug">{project.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {project.description}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed">
+                      <span className="font-semibold text-foreground">Use case: </span>
+                      <span className="text-muted-foreground">
+                        {project.usecase.trim() ? project.usecase : "—"}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="rounded-sm text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                    {href ? (
+                      <Button variant="outline" size="sm" className="mt-auto w-full gap-2" asChild>
+                        <Link href={href} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4" />
+                          View Project
+                        </Link>
+                      </Button>
+                    ) : (
+                    <div className="mt-auto h-9" aria-hidden />
+                  )}
+                </div>
+              </article>
+            )
+          })}
         </div>
+
+        <Button
+          type="button"
+          variant="outline"
+          size="icon"
+          className="group shrink-0 rounded-full h-12 w-12 border-2 border-foreground bg-background shadow-sm transition-all duration-200 hover:scale-110 hover:bg-foreground hover:text-background hover:shadow-md active:scale-95 disabled:pointer-events-none disabled:opacity-25 disabled:shadow-none disabled:hover:scale-100 disabled:hover:bg-background disabled:hover:text-foreground"
+          aria-label="Next projects"
+          disabled={!canScrollRight}
+          onClick={() => scrollByCard(1)}
+        >
+          <ChevronRight
+            className={`h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5 ${
+              canScrollRight ? "animate-nudge-right" : ""
+            }`}
+          />
+        </Button>
+      </div>
+
+      <div className="mt-10 flex justify-center px-4">
+        <Button variant="outline" className="border-2 border-foreground gap-2" asChild>
+          <Link
+            href="https://github.com/Abhisheik27"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github className="h-4 w-4" />
+            View more on GitHub
+          </Link>
+        </Button>
       </div>
     </section>
-  );
+  )
 }

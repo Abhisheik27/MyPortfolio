@@ -48,7 +48,7 @@ export function Hero() {
 
             <FadeIn delay={0.4} duration={0.7}>
               <p className="text-lg text-muted-foreground">
-                I am a Software Engineer, obsessed with building smart stuff using code. From streaming systems to LLM-powered tools, I like turning messy ideas into clean, working products. Currently riding the line between machine learning, software, and "wait… that actually works?"
+                An engineer obsessed with building smart stuff — streaming systems, LLM tools, and things that somehow make it to production. Currently shipping at Dagen AI as a Forward Deployed Engineer.
               </p>
             </FadeIn>
           </div>
